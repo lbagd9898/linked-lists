@@ -37,9 +37,7 @@ function LinkedList() {
   };
   const removeAt = (index) => {
     list.splice(index, 1);
-    console.log(list);
     list[index - 1].nextNode = list[index];
-    console.log(list);
   };
   const toString = () => {
     let string = "";
