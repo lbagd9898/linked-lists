@@ -28,6 +28,19 @@ function LinkedList() {
   const find = (value) => {
     return list.indexOf(value);
   };
+  const insertAt = (value, index) => {
+    const node = new Node();
+    node.value = value;
+    list.splice(index, 0, node);
+    node.nextNode = list[index + 1];
+    list[index - 1].nextNode = node;
+  };
+  const removeAt = (index) => {
+    list.splice(index, 1);
+    console.log(list);
+    list[index - 1].nextNode = list[index];
+    console.log(list);
+  };
   const toString = () => {
     let string = "";
     for (let i = 0; i < list.length; i++) {
@@ -48,6 +61,8 @@ function LinkedList() {
     contains,
     find,
     toString,
+    insertAt,
+    removeAt,
   };
 }
 
@@ -63,4 +78,8 @@ list.append("dog");
 list.append("cat");
 list.prepend("owl");
 
+list.insertAt("pig", 2);
+list.insertAt("kid", 2);
+console.log(list.toString());
+list.removeAt(2);
 console.log(list.toString());
